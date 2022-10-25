@@ -11,10 +11,7 @@ A user will be able to sign up as a Client or a Helping Hand. Clients will be ab
   1. Log in/register
   2. Submits a request, specifying the type (car wash, house work, etc)
   3. Submits payment for job 
-  4. Submit reviews for the Helping Hand(Star rating?
-  5. View own rating  
-  a. High rating and high request amount = preferred client status  
-  b. Some star on profile
+  4. Submit reviews for the Helping Hand(Star rating?  
   6. View past and active requests
   7. Can view/accept/deny bids on requests
 #### Helping Hand: 
@@ -22,18 +19,23 @@ A user will be able to sign up as a Client or a Helping Hand. Clients will be ab
   2. Places bids on jobs
   3. Can decline jobs after accepting   
   a. Cannot cancel within 24 hours
-  5. Can view own rating
   6. High amount of jobs completed and high rating = preferred operative  
-  a. Some symbol, different than the client
-  7. Submit review of client
+  a. Some symbol, different than the client  
+  7. Submit review of client  
   8. View past and upcoming jobs  
 
 ### Stretch Goals:
 1. Client:  
   a. Edit address, contact info and password  
   b. Calendar function  
+  c. View own rating  
+  a. High rating and high request amount = preferred client status  
+  b. Some star on profile  
 2. Helping Hand:  
   a. Edit address, contact info and password  
+  b. View own rating  
+  c. High rating and high request amount = preferred client status  
+  d. Some star on profile  
 
 
 
