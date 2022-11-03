@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Richard-And-The-Richettes-Helping-Hand-API.iml" filepath="$PROJECT_DIR$/.idea/Richard-And-The-Richettes-Helping-Hand-API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helping-hand-api/helping-hand-api.iml" filepath="$PROJECT_DIR$/helping-hand-api/helping-hand-api.iml" />
+    </modules>
+  </component>
+</project>
