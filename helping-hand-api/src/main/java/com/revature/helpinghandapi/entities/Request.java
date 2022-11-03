@@ -2,6 +2,7 @@ package com.revature.helpinghandapi.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="requests")
@@ -23,5 +24,8 @@ public class Request {
 
     @Column(nullable = false)
     private Date deadline;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "request")
+    Set<Bid> bids;
 
 }

@@ -14,6 +14,13 @@ public class Bid {
     @JoinColumn(referencedColumnName = "helper_id")
     private Helper helper;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "request_id")
+    private Request request;
 
+    @Column(nullable = false)
+    private float amount;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }
