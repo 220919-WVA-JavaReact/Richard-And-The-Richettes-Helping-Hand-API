@@ -11,11 +11,11 @@ public class Bid {
     private String id;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "helper_id")
+    @JoinColumn(name = "helper_id", referencedColumnName = "helper_id")
     private Helper helper;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "request_id")
+    @JoinColumn(name = "request_id", referencedColumnName = "request_id")
     private Request request;
 
     @Column(nullable = false)

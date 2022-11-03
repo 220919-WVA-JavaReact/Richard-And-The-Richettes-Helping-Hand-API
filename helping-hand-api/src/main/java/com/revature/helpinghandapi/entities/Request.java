@@ -13,7 +13,7 @@ public class Request {
     private String id;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "client_id")
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     private Client client;
 
     @Column(nullable = false)
