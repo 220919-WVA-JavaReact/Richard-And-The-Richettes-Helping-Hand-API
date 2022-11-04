@@ -1,4 +1,2 @@
-package com.revature.helpinghandapi.repositories;
-
-public class ClientRepository {
+package com.revature.helpinghandapi.repositories;public interface ClientRepository {
 }

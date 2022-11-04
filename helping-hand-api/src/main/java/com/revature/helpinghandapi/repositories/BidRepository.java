@@ -1,2 +1,2 @@
-package com.revature.helpinghandapi.repositories;public class BidRepository {
+package com.revature.helpinghandapi.repositories;public interface BidRepository {
 }
