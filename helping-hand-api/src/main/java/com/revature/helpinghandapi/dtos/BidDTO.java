@@ -8,18 +8,18 @@ import lombok.Data;
 
 @Data
 public class BidDTO {
-    private String id;
+//    private String id;
     private Helper helper;
     private Request request;
     private float amount;
-    private Status status;
+//    private Status status;
 
     public BidDTO(){}
     public BidDTO(Bid bid){
-        this.id = bid.getId();
+//        this.id = bid.getId();
         this.helper = bid.getHelper();
         this.request = bid.getRequest();
         this.amount = bid.getAmount();
-        this.status = bid.getStatus();
+//        this.status = bid.getStatus();
     }
 }
