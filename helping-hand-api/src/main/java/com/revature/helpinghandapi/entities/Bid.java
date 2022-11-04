@@ -12,11 +12,11 @@ public class Bid {
     @Column(name = "bid_id")
     private String id;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "helper_id", referencedColumnName = "helper_id")
     private Helper helper;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "request_id", referencedColumnName = "request_id")
     private Request request;
 

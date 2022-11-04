@@ -2,6 +2,7 @@ package com.revature.helpinghandapi.entities;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name="helpers")
@@ -27,6 +28,7 @@ public class Helper {
     Set<Bid> bids;
 
     public Helper() {
+        this.id = UUID.randomUUID().toString();
     }
 
 

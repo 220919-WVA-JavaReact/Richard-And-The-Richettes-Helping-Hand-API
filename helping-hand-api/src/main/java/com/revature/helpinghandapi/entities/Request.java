@@ -3,6 +3,7 @@ package com.revature.helpinghandapi.entities;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name="requests")
@@ -29,6 +30,7 @@ public class Request {
     Set<Bid> bids;
 
     public Request() {
+        this.id = UUID.randomUUID().toString();
     }
 
 
