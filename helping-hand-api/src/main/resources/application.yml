@@ -9,6 +9,7 @@ spring:
       ddl-auto: create # Specifies how Hibernate should interact with existing tables
       show-sql: true
 
+
 #spring:
 #  profiles:
 #    active:

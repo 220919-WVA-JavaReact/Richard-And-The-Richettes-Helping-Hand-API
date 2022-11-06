@@ -11,7 +11,7 @@ public class Request {
 
     @Id
     @Column(name = "request_id")
-    private String id;
+    private String requestId;
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
@@ -25,6 +25,9 @@ public class Request {
 
     @Column(nullable = false)
     private Date deadline;
+
+    @Column(nullable = false)
+    private Status status;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "request")
     Set<Bid> bids;
@@ -40,7 +43,7 @@ public class Request {
     }
 
     public Request(String id, Client client, String title, String description, Date deadline) {
-        this.id = id;
+        this.requestId = id;
         this.client = client;
         this.title = title;
         this.description = description;
@@ -48,11 +51,11 @@ public class Request {
     }
 
     public String getId() {
-        return id;
+        return requestId;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.requestId = id;
     }
 
     public Client getClient() {
@@ -95,23 +98,31 @@ public class Request {
         this.bids = bids;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Request request = (Request) o;
-        return Objects.equals(id, request.id) && Objects.equals(client, request.client) && Objects.equals(title, request.title) && Objects.equals(description, request.description) && Objects.equals(deadline, request.deadline) && Objects.equals(bids, request.bids);
+        return Objects.equals(requestId, request.requestId) && Objects.equals(client, request.client) && Objects.equals(title, request.title) && Objects.equals(description, request.description) && Objects.equals(deadline, request.deadline) && Objects.equals(bids, request.bids);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, client, title, description, deadline, bids);
+        return Objects.hash(requestId, client, title, description, deadline, bids);
     }
 
     @Override
     public String toString() {
         return "Request{" +
-                "id='" + id + '\'' +
+                "id='" + requestId + '\'' +
                 ", client=" + client +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +

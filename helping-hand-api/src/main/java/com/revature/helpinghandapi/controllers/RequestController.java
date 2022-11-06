@@ -1,14 +1,14 @@
 package com.revature.helpinghandapi.controllers;
 
+import com.revature.helpinghandapi.dtos.RequestDTO;
 import com.revature.helpinghandapi.entities.Request;
+import com.revature.helpinghandapi.entities.Status;
+import com.revature.helpinghandapi.exceptions.RequestNotFoundException;
 import com.revature.helpinghandapi.services.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +26,30 @@ public class RequestController {
         System.out.println("RequestController Created!");
         this.rs = rs;
 
+    }
+
+
+    @GetMapping("/requests")
+    @ResponseBody
+    public ResponseEntity<List<RequestDTO>> getRequests() {
+        List<RequestDTO> requests = rs.getAllRequests();
+        return new ResponseEntity<>(requests, HttpStatus.OK);
+    }
+
+    @GetMapping("/requests/{id}")
+    @ResponseBody
+    public ResponseEntity<RequestDTO> getRequestById(@PathVariable("id") String id) {
+
+            RequestDTO requestDTO = rs.getRequestById(id);
+            return new ResponseEntity<>(requestDTO, HttpStatus.OK);
+
+    }
+
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<RequestDTO> createRequest(String title){
+        RequestDTO requestDTO = rs.createRequest(title);
+        return new ResponseEntity<>(requestDTO, HttpStatus.CREATED);
     }
 
 
