@@ -1,7 +1,7 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name="bids")
@@ -24,6 +24,10 @@ public class Bid {
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    public Bid() {
+        this.id = UUID.randomUUID().toString();
+    }
 
     public String getId() {
         return id;
@@ -87,5 +91,16 @@ public class Bid {
     @Override
     public int hashCode() {
         return Objects.hash(id, helper, request, amount, status);
+    }
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                "id='" + id + '\'' +
+                ", helper=" + helper +
+                ", request=" + request +
+                ", amount=" + amount +
+                ", status=" + status +
+                '}';
     }
 }
