@@ -62,9 +62,21 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+
 			</plugin>
+
 		</plugins>
+<!--		<filter>-->
+<!--			<filter-name>CustomFilter</filter-name>-->
+<!--			<filter-class>com.revature.filters.CorsFilter</filter-class>-->
+<!--		</filter>-->
+<!--		<filter-mapping>-->
+<!--			<filter-name>CustomFilter</filter-name>-->
+<!--			<url-pattern>/*</url-pattern>-->
+<!--		</filter-mapping>-->
 	</build>
+
+
 
 	<profiles>
 		<profile>

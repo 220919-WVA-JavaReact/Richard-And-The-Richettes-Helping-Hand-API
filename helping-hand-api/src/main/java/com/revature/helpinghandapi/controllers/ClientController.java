@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/users")
 public class ClientController {
@@ -20,7 +21,8 @@ public class ClientController {
         this.cs = cs;
     }
 
-    @PostMapping
+
+    @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<ClientDTO> createClient(@RequestBody Credentials cred) {
         ClientDTO clientDTO = cs.createClient(cred);
         return new ResponseEntity<>(clientDTO, HttpStatus.CREATED);
