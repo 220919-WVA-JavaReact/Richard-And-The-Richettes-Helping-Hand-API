@@ -1,5 +1,4 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
@@ -71,11 +70,22 @@ public class Bid {
     }
 
     @Override
+    public String toString() {
+        return "Bid{" +
+                "id='" + id + '\'' +
+                ", helper=" + helper +
+                ", request=" + request +
+                ", amount=" + amount +
+                ", status=" + status +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bid bid = (Bid) o;
-        return Float.compare(bid.amount, amount) == 0 && id.equals(bid.id) && helper.equals(bid.helper) && request.equals(bid.request) && status == bid.status;
+        return Float.compare(bid.amount, amount) == 0 && Objects.equals(id, bid.id) && Objects.equals(helper, bid.helper) && Objects.equals(request, bid.request) && status == bid.status;
     }
 
     @Override

@@ -15,6 +15,4 @@ public interface BidRepository extends JpaRepository<Bid, String> {
 //    Bid createBid(String id, Helper helper, Request request, float amount, Status status);
 
 //    Bid updateBid(String id, Status status);
-
-
 }

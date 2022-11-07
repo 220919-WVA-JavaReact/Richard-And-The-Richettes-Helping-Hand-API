@@ -8,8 +8,9 @@ import com.revature.helpinghandapi.repositories.HelperRepository;
 import com.revature.helpinghandapi.repositories.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import static com.revature.helpinghandapi.entities.Status.PENDING;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BidService {
@@ -23,10 +24,7 @@ public class BidService {
         this.rr = rr;
         this.hr = hr;
     }
-
-
-
-
+    
     public Bid createBid(BidDTO bid){
         Bid newBid = new Bid();
         Request request = rr.findById(bid.getRequestId()).orElse(null);
@@ -40,7 +38,6 @@ public class BidService {
         return newBid;
     }
 
-
 //    public Bid updateBid(StatusDTO status){
 //        Bid newStatus = new Bid();
 //
@@ -53,4 +50,11 @@ public class BidService {
 //        return newStatus;
 //    }
 
+    public List<Bid> getAllBids() {
+        return br.findAll();
+    }
+
+    public Optional<Bid> getBidById(String id) {
+        return br.findById(id);
+    }
 }
