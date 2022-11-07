@@ -1,8 +1,8 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name="clients")
@@ -24,19 +24,13 @@ public class Client {
     @Column(nullable = false)
     private String last;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
-    Set<Request> requests;
-
-
     public Client() {
+        this.id = UUID.randomUUID().toString();
     }
 
-    public Client(String id, String username, String password, String first, String last) {
-        this.id = id;
+    public Client(String username, String password) {
         this.username = username;
         this.password = password;
-        this.first = first;
-        this.last = last;
     }
 
     public String getId() {
@@ -84,12 +78,12 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(username, client.username) && Objects.equals(password, client.password) && Objects.equals(first, client.first) && Objects.equals(last, client.last) && Objects.equals(requests, client.requests);
+        return Objects.equals(id, client.id) && Objects.equals(username, client.username) && Objects.equals(password, client.password) && Objects.equals(first, client.first) && Objects.equals(last, client.last);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, first, last, requests);
+        return Objects.hash(id, username, password, first, last);
     }
 
     @Override
@@ -100,7 +94,6 @@ public class Client {
                 ", password='" + password + '\'' +
                 ", first='" + first + '\'' +
                 ", last='" + last + '\'' +
-                ", requests=" + requests +
                 '}';
     }
 }
