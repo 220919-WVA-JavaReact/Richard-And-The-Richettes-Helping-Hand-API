@@ -7,15 +7,15 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name="requests")
+@Table(name= "requests")
 public class Request {
 
     @Id
-    @Column(name = "request_id")
+    @Column(name= "request_id")
     private String id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
+    @JoinColumn(name= "client_id", referencedColumnName = "client_id")
     private Client client;
 
     @Column(nullable = false)
@@ -27,12 +27,9 @@ public class Request {
     @Column(nullable = false)
     private Date deadline;
 
-
-
     public Request() {
         this.id = UUID.randomUUID().toString();
     }
-
 
     public String getId() {
         return id;
@@ -73,9 +70,6 @@ public class Request {
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
-
-
-
 
     @Override
     public boolean equals(Object o) {

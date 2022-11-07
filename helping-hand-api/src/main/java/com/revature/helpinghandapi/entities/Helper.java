@@ -25,13 +25,9 @@ public class Helper {
     @Column(nullable = false)
     private String last;
 
-
-
     public Helper() {
         this.id = UUID.randomUUID().toString();
     }
-
-
 
     public String getId() {
         return id;
@@ -72,9 +68,6 @@ public class Helper {
     public void setLast(String last) {
         this.last = last;
     }
-
-
-
 
     @Override
     public boolean equals(Object o) {
