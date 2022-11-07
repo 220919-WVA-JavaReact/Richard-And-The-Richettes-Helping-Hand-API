@@ -2,6 +2,7 @@ package com.revature.helpinghandapi.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -26,8 +27,8 @@ public class Request {
     @Column(nullable = false)
     private Date deadline;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "request")
-    Set<Bid> bids;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "request")
+//    Set<Bid> bids;
 
     public Request() {
         this.id = UUID.randomUUID().toString();
@@ -74,11 +75,36 @@ public class Request {
         this.deadline = deadline;
     }
 
-    public Set<Bid> getBids() {
-        return bids;
+//    public Set<Bid> getBids() {
+//        return bids;
+//    }
+
+//    public void setBids(Set<Bid> bids) {
+//        this.bids = bids;
+//    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Request request = (Request) o;
+        return Objects.equals(id, request.id) && Objects.equals(client, request.client) && Objects.equals(title, request.title) && Objects.equals(description, request.description) && Objects.equals(deadline, request.deadline);
     }
 
-    public void setBids(Set<Bid> bids) {
-        this.bids = bids;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, client, title, description, deadline);
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id='" + id + '\'' +
+                ", client=" + client +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", deadline=" + deadline +
+                '}';
     }
 }
