@@ -25,8 +25,7 @@ public class Helper {
     @Column(nullable = false)
     private String last;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "helper")
-//    Set<Bid> bids;
+
 
     public Helper() {
         this.id = UUID.randomUUID().toString();
@@ -74,13 +73,7 @@ public class Helper {
         this.last = last;
     }
 
-//    public Set<Bid> getBids() {
-//        return bids;
-//    }
-//
-//    public void setBids(Set<Bid> bids) {
-//        this.bids = bids;
-//    }
+
 
 
     @Override

@@ -27,8 +27,7 @@ public class Request {
     @Column(nullable = false)
     private Date deadline;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "request")
-//    Set<Bid> bids;
+
 
     public Request() {
         this.id = UUID.randomUUID().toString();
@@ -75,13 +74,7 @@ public class Request {
         this.deadline = deadline;
     }
 
-//    public Set<Bid> getBids() {
-//        return bids;
-//    }
 
-//    public void setBids(Set<Bid> bids) {
-//        this.bids = bids;
-//    }
 
 
     @Override
