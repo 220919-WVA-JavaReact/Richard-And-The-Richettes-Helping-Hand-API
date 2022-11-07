@@ -70,17 +70,6 @@ public class Bid {
     }
 
     @Override
-    public String toString() {
-        return "Bid{" +
-                "id='" + id + '\'' +
-                ", helper=" + helper +
-                ", request=" + request +
-                ", amount=" + amount +
-                ", status=" + status +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
