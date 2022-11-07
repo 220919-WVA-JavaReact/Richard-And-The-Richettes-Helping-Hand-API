@@ -27,7 +27,6 @@ public class Request {
     @Column(nullable = false)
     private Date deadline;
 
-
     public Request() {
         this.id = UUID.randomUUID().toString();
     }
@@ -71,7 +70,6 @@ public class Request {
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
-
 
     @Override
     public boolean equals(Object o) {

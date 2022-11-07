@@ -1,7 +1,7 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name="bids")
@@ -26,19 +26,7 @@ public class Bid {
     private Status status;
 
     public Bid() {
-    }
-
-    public Bid(String id, com.revature.helpinghandapi.entities.Helper helper, Request request, float amount) {
-        this.id = id;
-        this.helper = helper;
-        this.request = request;
-        this.amount = amount;
-    }
-
-    public Bid(String id, com.revature.helpinghandapi.entities.Helper helper, Request request) {
-        this.id = id;
-        this.helper = helper;
-        this.request = request;
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
@@ -49,11 +37,11 @@ public class Bid {
         this.id = id;
     }
 
-    public com.revature.helpinghandapi.entities.Helper getHelper() {
+    public Helper getHelper() {
         return helper;
     }
 
-    public void setHelper(com.revature.helpinghandapi.entities.Helper helper) {
+    public void setHelper(Helper helper) {
         this.helper = helper;
     }
 

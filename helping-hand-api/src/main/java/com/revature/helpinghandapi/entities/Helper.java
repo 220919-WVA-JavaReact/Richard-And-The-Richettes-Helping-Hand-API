@@ -3,6 +3,7 @@ package com.revature.helpinghandapi.entities;
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name="helpers")
@@ -24,18 +25,8 @@ public class Helper {
     @Column(nullable = false)
     private String last;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "helper")
-    Set<Bid> bids;
-
     public Helper() {
-    }
-
-    public Helper(String id, String username, String password, String first, String last) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.first = first;
-        this.last = last;
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
@@ -78,25 +69,17 @@ public class Helper {
         this.last = last;
     }
 
-    public Set<Bid> getBids() {
-        return bids;
-    }
-
-    public void setBids(Set<Bid> bids) {
-        this.bids = bids;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Helper helper = (Helper) o;
-        return Objects.equals(id, helper.id) && Objects.equals(username, helper.username) && Objects.equals(password, helper.password) && Objects.equals(first, helper.first) && Objects.equals(last, helper.last) && Objects.equals(bids, helper.bids);
+        return Objects.equals(id, helper.id) && Objects.equals(username, helper.username) && Objects.equals(password, helper.password) && Objects.equals(first, helper.first) && Objects.equals(last, helper.last);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, first, last, bids);
+        return Objects.hash(id, username, password, first, last);
     }
 
     @Override
@@ -107,7 +90,6 @@ public class Helper {
                 ", password='" + password + '\'' +
                 ", first='" + first + '\'' +
                 ", last='" + last + '\'' +
-                ", bids=" + bids +
                 '}';
     }
 }
