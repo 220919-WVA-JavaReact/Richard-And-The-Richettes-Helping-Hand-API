@@ -13,9 +13,8 @@ import java.util.Optional;
 @Repository
 public interface RequestRepository extends JpaRepository<Request, String> {
 
-    Request findRequestByRequestId(String id);
     Request findRequestByClientId(Client client);
 
-    List<Request> findRequestByStatus(Status status);
+
 
 }

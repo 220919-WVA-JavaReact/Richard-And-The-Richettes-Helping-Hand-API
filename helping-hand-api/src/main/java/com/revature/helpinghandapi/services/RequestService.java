@@ -5,6 +5,7 @@ import com.revature.helpinghandapi.entities.Client;
 import com.revature.helpinghandapi.entities.Request;
 import com.revature.helpinghandapi.entities.Status;
 import com.revature.helpinghandapi.exceptions.RequestNotFoundException;
+import com.revature.helpinghandapi.repositories.ClientRepository;
 import com.revature.helpinghandapi.repositories.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,13 @@ public class RequestService {
 
     @Autowired
     private RequestRepository rr;
+    private ClientRepository cr;
+
     @Autowired
-    public RequestService(RequestRepository rr){
+    public RequestService(RequestRepository rr, ClientRepository cr){
         System.out.println("RequestService Created!");
         this.rr = rr;
-        List<Request> request = rr.findAll();
+        this.cr = cr;
 
 //        request.forEach(r -> System.out.println(r));
 //        Request requests = rr.getById(Client);
@@ -36,13 +39,6 @@ public class RequestService {
         return requestDTO;
     }
 
-    public List<RequestDTO> findRequestsByStatus(Status status){
-        List<Request> requests = rr.findRequestByStatus(status);
-        List<RequestDTO> requestDTO = requests.stream()
-                .map(request -> new RequestDTO(request))
-                .collect(Collectors.toList());
-        return requestDTO;
-    }
 
     public RequestDTO getRequestById(String id) throws RequestNotFoundException {
         Request request = rr.findById(id).orElseThrow(() -> new RequestNotFoundException());
@@ -50,13 +46,16 @@ public class RequestService {
         return requestDTO;
     }
 
-    public RequestDTO createRequest(String title){
+    public Request createRequest(RequestDTO request){
         Request newRequest = new Request();
-        newRequest.setStatus(Status.PENDING);
-//        newRequest.setClient(client.getId());
+        Client client = cr.findById(request.getClientId()).orElse(null);
+        newRequest.setClient(client);
+        newRequest.setDescription(request.getDescription());
+        newRequest.setTitle(request.getTitle());
+        newRequest.setDeadline(request.getDeadline());
 
         rr.save(newRequest);
-        return new RequestDTO(newRequest);
+        return newRequest;
     }
 
 

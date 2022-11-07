@@ -3,6 +3,7 @@ spring:
     url: ${HH_DB_URL} # Environment variables to not hardcode values
     username: ${HH_DB_USERNAME}
     password: ${HH_DB_PASSWORD}
+
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:

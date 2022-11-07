@@ -20,7 +20,6 @@ public class RequestController {
 
     @Autowired
     private RequestService rs;
-    private HttpServletRequest req;
 
     public RequestController(RequestService rs){
         System.out.println("RequestController Created!");
@@ -29,15 +28,15 @@ public class RequestController {
     }
 
 
-    @GetMapping("/requests")
-    @ResponseBody
-    public ResponseEntity<List<RequestDTO>> getRequests() {
+//    @GetMapping("/requests")
+//    @ResponseBody
+    public ResponseEntity<List<RequestDTO>> getAllRequests() {
         List<RequestDTO> requests = rs.getAllRequests();
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
 
-    @GetMapping("/requests/{id}")
-    @ResponseBody
+//    @GetMapping("/requests/{id}")
+//    @ResponseBody
     public ResponseEntity<RequestDTO> getRequestById(@PathVariable("id") String id) {
 
             RequestDTO requestDTO = rs.getRequestById(id);
@@ -46,10 +45,9 @@ public class RequestController {
     }
 
     @PostMapping
-    @ResponseBody
-    public ResponseEntity<RequestDTO> createRequest(String title){
-        RequestDTO requestDTO = rs.createRequest(title);
-        return new ResponseEntity<>(requestDTO, HttpStatus.CREATED);
+    public ResponseEntity<Request> createRequest(@RequestBody RequestDTO request){
+        Request newRequest = rs.createRequest(request);
+        return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
     }
 
 

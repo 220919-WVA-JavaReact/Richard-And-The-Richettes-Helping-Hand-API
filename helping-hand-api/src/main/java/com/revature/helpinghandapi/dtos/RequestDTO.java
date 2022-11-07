@@ -5,24 +5,27 @@ import com.revature.helpinghandapi.entities.Request;
 import com.revature.helpinghandapi.entities.Status;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.Objects;
 import java.io.Serializable;
 
 
 @Data
 public class RequestDTO {
-    private String id;
+    private String clientId;
     private String title;
-    private Client clientId;
-    private Status status;
+
+    private String description;
+
+    private Date deadline;
 
     public RequestDTO(){}
 
     public RequestDTO(Request request){
-        this.id = request.getId();
+        this.clientId = request.getClient().getId();
         this.title = request.getTitle();
-        this.clientId = request.getClient();
-        this.status = request.getStatus();
+        this.description = request.getDescription();
+        this.deadline = request.getDeadline();
     }
 
 }
