@@ -1,5 +1,4 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -25,24 +24,8 @@ public class Helper {
     @Column(nullable = false)
     private String last;
 
-
     public Helper() {
         this.id = UUID.randomUUID().toString();
-    }
-
-    public Helper(String id, String username, String password, String first, String last) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.first = first;
-        this.last = last;
-    }
-
-    public Helper(String username, String password, String first, String last) {
-        this.username = username;
-        this.password = password;
-        this.first = first;
-        this.last = last;
     }
 
     public Helper(String username, String password) {

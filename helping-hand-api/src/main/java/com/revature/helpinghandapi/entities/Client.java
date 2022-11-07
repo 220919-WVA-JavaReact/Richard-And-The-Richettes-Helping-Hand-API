@@ -1,5 +1,4 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -27,21 +26,6 @@ public class Client {
 
     public Client() {
         this.id = UUID.randomUUID().toString();
-    }
-
-    public Client(String id, String username, String password, String first, String last) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.first = first;
-        this.last = last;
-    }
-
-    public Client(String username, String password, String first, String last) {
-        this.username = username;
-        this.password = password;
-        this.first = first;
-        this.last = last;
     }
 
     public Client(String username, String password) {

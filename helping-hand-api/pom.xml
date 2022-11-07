@@ -12,7 +12,7 @@
 	<artifactId>helping-hand-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>helping-hand-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Api Project for HelpingHands</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -29,7 +29,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -55,28 +58,16 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-
 			</plugin>
-
 		</plugins>
-<!--		<filter>-->
-<!--			<filter-name>CustomFilter</filter-name>-->
-<!--			<filter-class>com.revature.filters.CorsFilter</filter-class>-->
-<!--		</filter>-->
-<!--		<filter-mapping>-->
-<!--			<filter-name>CustomFilter</filter-name>-->
-<!--			<url-pattern>/*</url-pattern>-->
-<!--		</filter-mapping>-->
 	</build>
-
-
 
 	<profiles>
 		<profile>
