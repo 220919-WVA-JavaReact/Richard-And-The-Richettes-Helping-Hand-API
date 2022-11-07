@@ -1,8 +1,6 @@
 package com.revature.helpinghandapi.controllers;
-
-
-import com.revature.helpinghandapi.dto.Credentials;
-import com.revature.helpinghandapi.dto.HelperDTO;
+import com.revature.helpinghandapi.dtos.Credentials;
+import com.revature.helpinghandapi.dtos.HelperDTO;
 import com.revature.helpinghandapi.services.HelperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

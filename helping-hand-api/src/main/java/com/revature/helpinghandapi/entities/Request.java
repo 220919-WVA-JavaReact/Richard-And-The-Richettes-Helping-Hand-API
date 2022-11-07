@@ -7,15 +7,15 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name= "requests")
+@Table(name = "requests")
 public class Request {
 
     @Id
-    @Column(name= "request_id")
+    @Column(name = "request_id")
     private String id;
 
     @ManyToOne
-    @JoinColumn(name= "client_id", referencedColumnName = "client_id")
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     private Client client;
 
     @Column(nullable = false)

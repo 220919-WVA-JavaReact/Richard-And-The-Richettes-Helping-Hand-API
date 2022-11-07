@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface HelperRepository extends JpaRepository<Helper, Integer> {
+public interface HelperRepository extends JpaRepository<Helper, String> {
     Optional<Helper> getHelperByUsername(String username);
 
     Optional<Helper> getHelperByUsernameAndPassword(String username, String password);

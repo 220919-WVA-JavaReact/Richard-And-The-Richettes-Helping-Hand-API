@@ -29,7 +29,6 @@ public class BidService {
         Bid newBid = new Bid();
         Request request = rr.findById(bid.getRequestId()).orElse(null);
         Helper helper = hr.findById(bid.getHelperId()).orElse(null);
-
         newBid.setHelper(helper);
         newBid.setRequest(request);
         newBid.setAmount(bid.getAmount());
@@ -38,17 +37,6 @@ public class BidService {
         return newBid;
     }
 
-//    public Bid updateBid(StatusDTO status){
-//        Bid newStatus = new Bid();
-//
-//        newStatus.getHelper(status.Set);
-//        newStatus.getRequest();
-//        newStatus.getAmount();
-//        newStatus.setStatus(status.setStatus());
-//
-//
-//        return newStatus;
-//    }
 
     public List<Bid> getAllBids() {
         return br.findAll();

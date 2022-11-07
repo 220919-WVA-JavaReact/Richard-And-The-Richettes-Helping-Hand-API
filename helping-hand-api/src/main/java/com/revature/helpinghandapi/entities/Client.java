@@ -1,11 +1,10 @@
 package com.revature.helpinghandapi.entities;
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name="clients")
+@Table(name = "clients")
 public class Client {
 
     @Id

@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name="bids")
+@Table(name = "bids")
 public class Bid {
 
     @Id

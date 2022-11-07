@@ -1,8 +1,6 @@
 package com.revature.helpinghandapi.services;
-
-
-import com.revature.helpinghandapi.dto.Credentials;
-import com.revature.helpinghandapi.dto.HelperDTO;
+import com.revature.helpinghandapi.dtos.Credentials;
+import com.revature.helpinghandapi.dtos.HelperDTO;
 import com.revature.helpinghandapi.entities.Helper;
 import com.revature.helpinghandapi.repositories.HelperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
