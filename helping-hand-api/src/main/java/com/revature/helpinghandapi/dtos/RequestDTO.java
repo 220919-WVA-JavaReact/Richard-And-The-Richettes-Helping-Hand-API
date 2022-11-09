@@ -10,6 +10,7 @@ public class RequestDTO {
     private String title;
     private String description;
     private Date deadline;
+    private String id;
 
     private String requestId;
 
