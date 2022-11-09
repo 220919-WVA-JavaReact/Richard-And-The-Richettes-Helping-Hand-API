@@ -45,4 +45,12 @@ public class BidService {
     public Optional<Bid> getBidById(String id) {
         return br.findById(id);
     }
+
+    public List<BidDTO> getBidsByRequestId(String requestId) {
+        return br.findByRequestId(requestId);
+    }
+
+    public List<BidDTO> getBidsByHelperId(String helperId) {
+        return br.findByHelperId(helperId);
+    }
 }
