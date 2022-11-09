@@ -39,13 +39,6 @@ public class BidController {
         return new ResponseEntity<>(updatedBid, HttpStatus.ACCEPTED);
     } // this communicates with the Service Layer to change the Status of a bid
 
-    @PatchMapping("/close")
-    public ResponseEntity<List<Bid>> closeBid(@RequestBody BidDTO bidDTO){
-        List<Bid> bids = bs.closeBid(bidDTO);
-        System.out.println(bids);
-        return new ResponseEntity<>(bids, HttpStatus.ACCEPTED);
-    }
-
     @GetMapping
     public ResponseEntity<List<Bid>> getBids() {
         return new ResponseEntity<>(bs.getAllBids(), HttpStatus.OK);
