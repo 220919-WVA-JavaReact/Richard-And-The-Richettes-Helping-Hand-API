@@ -18,7 +18,7 @@ public class ClientService {
 
     public ClientDTO createClient(Credentials cred){
         if(cr.getClientByUsername(cred.getUsername()).isPresent()) {
-
+            // adding validation later
         }
         Client newClient = new Client();
         newClient.setFirst(cred.getFirst());
@@ -31,7 +31,7 @@ public class ClientService {
     public ClientDTO authenticate(Credentials cred) {
         Client client = cr.getClientByUsernameAndPassword(cred.getUsername(), cred.getPassword()).orElseThrow(LoginException::new);
         if(cred.getUsername() != client.getUsername() || cred.getPassword() != client.getPassword()){
-
+            // adding validation later
         }
         return new ClientDTO(client);
     }

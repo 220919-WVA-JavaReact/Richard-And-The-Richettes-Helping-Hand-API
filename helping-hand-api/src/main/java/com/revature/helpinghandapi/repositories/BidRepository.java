@@ -3,7 +3,6 @@ import com.revature.helpinghandapi.dtos.BidDTO;
 import com.revature.helpinghandapi.entities.Bid;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -11,9 +10,4 @@ public interface BidRepository extends JpaRepository<Bid, String> {
     List<BidDTO> findByRequestId(String requestId);
 
     List<BidDTO> findByHelperId(String helperId);
-//equals DAO
-
-//    Bid createBid(String id, Helper helper, Request request, float amount, Status status);
-
-//    Bid updateBid(String id, Status status);
 }

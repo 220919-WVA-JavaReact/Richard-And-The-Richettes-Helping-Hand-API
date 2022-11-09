@@ -9,5 +9,4 @@ public interface HelperRepository extends JpaRepository<Helper, String> {
     Optional<Helper> getHelperByUsername(String username);
 
     Optional<Helper> getHelperByUsernameAndPassword(String username, String password);
-    
 }

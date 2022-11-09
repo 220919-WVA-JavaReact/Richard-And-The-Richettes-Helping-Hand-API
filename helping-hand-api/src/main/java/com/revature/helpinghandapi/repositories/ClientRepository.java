@@ -9,5 +9,4 @@ public interface ClientRepository extends JpaRepository<Client, String> {
     Optional<Client> getClientByUsername(String username);
 
     Optional<Client> getClientByUsernameAndPassword(String username, String password);
-    
 }

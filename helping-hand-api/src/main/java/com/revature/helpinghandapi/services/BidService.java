@@ -1,23 +1,16 @@
 package com.revature.helpinghandapi.services;
 import com.revature.helpinghandapi.dtos.BidDTO;
-import com.revature.helpinghandapi.dtos.RequestDTO;
 import com.revature.helpinghandapi.entities.Bid;
 import com.revature.helpinghandapi.entities.Helper;
 import com.revature.helpinghandapi.entities.Request;
-import com.revature.helpinghandapi.entities.Status;
+import static com.revature.helpinghandapi.entities.Status.*;
 import com.revature.helpinghandapi.repositories.BidRepository;
 import com.revature.helpinghandapi.repositories.HelperRepository;
 import com.revature.helpinghandapi.repositories.RequestRepository;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
-
-import static com.revature.helpinghandapi.entities.Status.*;
 
 @Service
 public class BidService {
@@ -70,8 +63,6 @@ public class BidService {
             }
         }
     }
-
-
 
     public List<Bid> getAllBids() {
         return br.findAll();

@@ -2,10 +2,8 @@ package com.revature.helpinghandapi.controllers;
 import com.revature.helpinghandapi.dtos.BidDTO;
 import com.revature.helpinghandapi.dtos.Credentials;
 import com.revature.helpinghandapi.dtos.HelperDTO;
-import com.revature.helpinghandapi.entities.Client;
 import com.revature.helpinghandapi.services.BidService;
 import com.revature.helpinghandapi.dtos.RequestDTO;
-import com.revature.helpinghandapi.entities.Availability;
 import com.revature.helpinghandapi.entities.Request;
 import com.revature.helpinghandapi.services.HelperService;
 import com.revature.helpinghandapi.services.RequestService;
@@ -13,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Optional;
-import java.util.ArrayList;
 import java.util.List;
 
 

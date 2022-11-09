@@ -1,11 +1,11 @@
 package com.revature.helpinghandapi.controllers;
 import com.revature.helpinghandapi.dtos.BidDTO;
 import com.revature.helpinghandapi.dtos.ClientDTO;
+import com.revature.helpinghandapi.dtos.RequestDTO;
 import com.revature.helpinghandapi.dtos.Credentials;
 import com.revature.helpinghandapi.entities.Client;
 import com.revature.helpinghandapi.repositories.ClientRepository;
 import com.revature.helpinghandapi.services.BidService;
-import com.revature.helpinghandapi.dtos.RequestDTO;
 import com.revature.helpinghandapi.services.ClientService;
 import com.revature.helpinghandapi.services.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,11 @@ public class ClientController {
     private final RequestService rs;
 
     @Autowired
-    public ClientController(ClientService cs, BidService bs, ClientRepository cr){
+    public ClientController(ClientService cs, BidService bs, ClientRepository cr, RequestService rs){
         this.cs = cs;
         this.bs = bs;
         this.cr = cr;
+        this.rs = rs;
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
@@ -49,6 +50,5 @@ public class ClientController {
     public ResponseEntity<List<RequestDTO>> getRequestsByClientId(@PathVariable("id") String id) {
         List<RequestDTO> requests = rs.getRequestsByClientId(id);
         return new ResponseEntity<>(requests, HttpStatus.OK);
-
     }
 }

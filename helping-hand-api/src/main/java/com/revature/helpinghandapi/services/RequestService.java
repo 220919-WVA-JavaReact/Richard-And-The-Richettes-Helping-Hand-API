@@ -1,6 +1,5 @@
 package com.revature.helpinghandapi.services;
 import com.revature.helpinghandapi.dtos.RequestDTO;
-import com.revature.helpinghandapi.entities.Availability;
 import com.revature.helpinghandapi.entities.Client;
 import com.revature.helpinghandapi.entities.Request;
 import com.revature.helpinghandapi.exceptions.RequestNotFoundException;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static com.revature.helpinghandapi.entities.Availability.CLOSED;
 import static com.revature.helpinghandapi.entities.Availability.OPEN;
 
@@ -76,5 +74,4 @@ public class RequestService {
         rr.save(newRequest);
         return newRequest;
     }
-
 }
