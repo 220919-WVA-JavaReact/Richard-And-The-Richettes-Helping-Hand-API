@@ -1,4 +1,5 @@
 package com.revature.helpinghandapi.dtos;
+import com.revature.helpinghandapi.entities.Availability;
 import com.revature.helpinghandapi.entities.Request;
 import lombok.Data;
 import java.util.Date;
@@ -11,14 +12,21 @@ public class RequestDTO {
     private Date deadline;
     private String id;
 
+    private String requestId;
+
+    private Availability availability;
+
     public RequestDTO(){}
 
     public RequestDTO(Request request){
+        this.requestId = request.getId();
         this.clientId = request.getClient().getId();
         this.title = request.getTitle();
         this.description = request.getDescription();
         this.deadline = request.getDeadline();
-        this.id = request.getId();
+        this.availability = request.getAvailability();
     }
+
+
 
 }
