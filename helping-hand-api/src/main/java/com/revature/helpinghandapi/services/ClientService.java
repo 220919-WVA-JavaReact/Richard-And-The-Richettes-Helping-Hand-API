@@ -2,6 +2,7 @@ package com.revature.helpinghandapi.services;
 import com.revature.helpinghandapi.dtos.ClientDTO;
 import com.revature.helpinghandapi.dtos.Credentials;
 import com.revature.helpinghandapi.entities.Client;
+import com.revature.helpinghandapi.exceptions.LoginException;
 import com.revature.helpinghandapi.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,13 @@ public class ClientService {
         newClient.setUsername(cred.getUsername());
         newClient.setPassword(cred.getPassword());
         return new ClientDTO(cr.save(newClient));
+    }
+
+    public ClientDTO authenticate(Credentials cred) {
+        Client client = cr.getClientByUsernameAndPassword(cred.getUsername(), cred.getPassword()).orElseThrow(LoginException::new);
+        if(cred.getUsername() != client.getUsername() || cred.getPassword() != client.getPassword()){
+
+        }
+        return new ClientDTO(client);
     }
 }

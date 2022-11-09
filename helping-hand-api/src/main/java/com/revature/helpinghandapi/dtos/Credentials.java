@@ -1,8 +1,10 @@
 package com.revature.helpinghandapi.dtos;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class Credentials {
+public class Credentials{
 
     private String first;
     private String last;
