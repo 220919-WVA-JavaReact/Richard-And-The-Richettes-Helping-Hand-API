@@ -58,7 +58,7 @@ public class BidService {
         return updatedBid;
     } //This takes in a JSON object that contains the requestId and allows the Status and amount to be changed
 
-    public List<Bid> closeBid(BidDTO bidDTO){
+    public void closeBid(BidDTO bidDTO){
         Request request = rr.findById(bidDTO.getRequestId()).orElse(null);
         List<Bid> bids = br.findAll();
         for(Bid bid : bids){
@@ -70,7 +70,6 @@ public class BidService {
                 }
             }
         }
-        return bids;
     }
 
 
