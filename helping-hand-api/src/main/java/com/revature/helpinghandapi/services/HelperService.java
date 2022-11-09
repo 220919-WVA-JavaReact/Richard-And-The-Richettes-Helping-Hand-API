@@ -1,7 +1,10 @@
 package com.revature.helpinghandapi.services;
+import com.revature.helpinghandapi.dtos.ClientDTO;
 import com.revature.helpinghandapi.dtos.Credentials;
 import com.revature.helpinghandapi.dtos.HelperDTO;
+import com.revature.helpinghandapi.entities.Client;
 import com.revature.helpinghandapi.entities.Helper;
+import com.revature.helpinghandapi.exceptions.LoginException;
 import com.revature.helpinghandapi.repositories.HelperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +28,13 @@ public class HelperService {
         newHelper.setUsername(cred.getUsername());
         newHelper.setPassword(cred.getPassword());
         return new HelperDTO(hr.save(newHelper));
+    }
+
+    public HelperDTO authenticate(Credentials cred) {
+        Helper helper = hr.getHelperByUsernameAndPassword(cred.getUsername(), cred.getPassword()).orElseThrow(LoginException::new);
+        if(cred.getUsername() != helper.getUsername() || cred.getPassword() != helper.getPassword()){
+
+        }
+        return new HelperDTO(helper);
     }
 }

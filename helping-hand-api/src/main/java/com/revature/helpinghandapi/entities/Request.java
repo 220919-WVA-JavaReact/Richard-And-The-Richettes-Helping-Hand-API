@@ -1,9 +1,7 @@
 package com.revature.helpinghandapi.entities;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +24,9 @@ public class Request {
 
     @Column(nullable = false)
     private Date deadline;
+
+    @Enumerated(EnumType.STRING)
+    private Availability availability;
 
     public Request() {
         this.id = UUID.randomUUID().toString();
@@ -71,17 +72,25 @@ public class Request {
         this.deadline = deadline;
     }
 
+    public Availability getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(Availability availability) {
+        this.availability = availability;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Request request = (Request) o;
-        return Objects.equals(id, request.id) && Objects.equals(client, request.client) && Objects.equals(title, request.title) && Objects.equals(description, request.description) && Objects.equals(deadline, request.deadline);
+        return Objects.equals(id, request.id) && Objects.equals(client, request.client) && Objects.equals(title, request.title) && Objects.equals(description, request.description) && Objects.equals(deadline, request.deadline) && availability == request.availability;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, client, title, description, deadline);
+        return Objects.hash(id, client, title, description, deadline, availability);
     }
 
     @Override
@@ -92,6 +101,7 @@ public class Request {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", deadline=" + deadline +
+                ", availability=" + availability +
                 '}';
     }
 }

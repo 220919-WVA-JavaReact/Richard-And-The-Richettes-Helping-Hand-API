@@ -1,5 +1,6 @@
 package com.revature.helpinghandapi.controllers;
 import com.revature.helpinghandapi.dtos.BidDTO;
+import com.revature.helpinghandapi.dtos.RequestDTO;
 import com.revature.helpinghandapi.entities.Bid;
 import com.revature.helpinghandapi.services.BidService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,14 @@ public class BidController {
     public ResponseEntity<Bid> createBid(@RequestBody BidDTO bid){
         Bid newBid = bs.createBid(bid);
         return new ResponseEntity<>(newBid, HttpStatus.CREATED);
-    }
+    } //this communicates with the Service Layer in order to create a new bid
+
+//    @PostMapping(consumes = "application/json", produces = "application/json")
+    @PatchMapping
+    public ResponseEntity<Bid> updateBid(@RequestBody BidDTO bidDTO){
+        Bid updatedBid = bs.updateBid(bidDTO);
+        return new ResponseEntity<>(updatedBid, HttpStatus.ACCEPTED);
+    } // this communicates with the Service Layer to change the Status of a bid
 
     @GetMapping
     public ResponseEntity<List<Bid>> getBids() {

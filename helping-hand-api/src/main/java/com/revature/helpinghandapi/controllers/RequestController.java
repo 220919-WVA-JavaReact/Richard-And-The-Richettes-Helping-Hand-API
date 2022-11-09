@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/requests")
+@RequestMapping("/client")
 public class RequestController {
 
     @Autowired
@@ -20,29 +20,10 @@ public class RequestController {
         this.rs = rs;
     }
 
-//    @GetMapping("/requests")
-//    @ResponseBody
-    public ResponseEntity<List<RequestDTO>> getAllRequests() {
-        List<RequestDTO> requests = rs.getAllRequests();
-        return new ResponseEntity<>(requests, HttpStatus.OK);
-    }
-
-//    @GetMapping("/requests/{id}")
-//    @ResponseBody
-    public ResponseEntity<RequestDTO> getRequestById(@PathVariable("id") String id) {
-
-            RequestDTO requestDTO = rs.getRequestById(id);
-            return new ResponseEntity<>(requestDTO, HttpStatus.OK);
-
-    }
-
     @PostMapping
     public ResponseEntity<Request> createRequest(@RequestBody RequestDTO request){
         Request newRequest = rs.createRequest(request);
         return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
     }
-
-
-
 
 }
