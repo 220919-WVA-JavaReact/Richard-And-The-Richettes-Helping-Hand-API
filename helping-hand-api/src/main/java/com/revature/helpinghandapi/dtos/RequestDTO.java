@@ -9,6 +9,7 @@ public class RequestDTO {
     private String title;
     private String description;
     private Date deadline;
+    private String id;
 
     public RequestDTO(){}
 
@@ -17,6 +18,7 @@ public class RequestDTO {
         this.title = request.getTitle();
         this.description = request.getDescription();
         this.deadline = request.getDeadline();
+        this.id = request.getId();
     }
 
 }
