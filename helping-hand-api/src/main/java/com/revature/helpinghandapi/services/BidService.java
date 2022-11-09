@@ -47,7 +47,6 @@ public class BidService {
 
     public Bid updateBid(BidDTO bid){
         Bid updatedBid = br.findById(bid.getBidId()).orElse(null);
-        Request request = rr.findById(bid.getRequestId()).orElse(null);
         assert updatedBid != null;
         updatedBid.setStatus(bid.getBidStatus()); //this has to be marked as getBidStatus because the Status is an object
         updatedBid.setAmount(bid.getAmount());
