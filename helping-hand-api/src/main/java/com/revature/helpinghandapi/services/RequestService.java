@@ -63,7 +63,7 @@ public class RequestService {
         return requests;
     }
 
-    public Request createRequest(RequestDTO request){
+    public RequestDTO createRequest(RequestDTO request){
         Request newRequest = new Request();
         Client client = cr.findById(request.getClientId()).orElse(null);
         newRequest.setClient(client);
@@ -72,6 +72,10 @@ public class RequestService {
         newRequest.setDeadline(request.getDeadline());
         newRequest.setAvailability(OPEN);
         rr.save(newRequest);
-        return newRequest;
+
+        request.setClientId(client.getId());
+        request.setAvailability(OPEN);
+        request.setRequestId(newRequest.getId());
+        return request;
     }
 }
