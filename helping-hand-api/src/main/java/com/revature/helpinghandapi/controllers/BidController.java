@@ -21,20 +21,20 @@ public class BidController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Bid> createBid(@RequestBody BidDTO bid){
-        Bid newBid = bs.createBid(bid);
+    public ResponseEntity<BidDTO> createBid(@RequestBody BidDTO bid){
+        BidDTO newBid = bs.createBid(bid);
         return new ResponseEntity<>(newBid, HttpStatus.CREATED);
     } //this communicates with the Service Layer in order to create a new bid
 
-//    @PostMapping(consumes = "application/json", produces = "application/json")
+    //    @PostMapping(consumes = "application/json", produces = "application/json")
     @PatchMapping
-    public ResponseEntity<Bid> updateBid(@RequestBody BidDTO bidDTO){
-        Bid updatedBid = bs.updateBid(bidDTO);
+    public ResponseEntity<BidDTO> updateBid(@RequestBody BidDTO bidDTO){
+        BidDTO updatedBid = bs.updateBid(bidDTO);
         return new ResponseEntity<>(updatedBid, HttpStatus.ACCEPTED);
     } // this communicates with the Service Layer to change the Status of a bid
 
     @GetMapping
-    public ResponseEntity<List<Bid>> getBids() {
+    public ResponseEntity<List<BidDTO>> getBids() {
         return new ResponseEntity<>(bs.getAllBids(), HttpStatus.OK);
     }
 
