@@ -1,6 +1,7 @@
 package com.revature.helpinghandapi.services;
 
 import com.revature.helpinghandapi.dtos.BidDTO;
+import com.revature.helpinghandapi.dtos.HelperDTO;
 import com.revature.helpinghandapi.entities.Bid;
 import com.revature.helpinghandapi.entities.Helper;
 import com.revature.helpinghandapi.entities.Request;
@@ -32,16 +33,14 @@ public class BidService {
         Bid newBid = new Bid();
         Request request = rr.findById(bid.getRequestId()).orElse(null);
         Helper helper = hr.findById(bid.getHelperId()).orElse(null);
-
         newBid.setHelper(helper);
         newBid.setRequest(request);
         newBid.setAmount(bid.getAmount());
         newBid.setStatus(PENDING);
         br.save(newBid);
-
         bid.setBidStatus(PENDING);
         bid.setBidId(newBid.getId());
-
+        bid.setHelperId(helper.getId());
         return bid;
     } //This takes in a JSON object that contains helperId of the helper making the bid,the requestId that they want to make a bid on and the amount they want to bid
 
@@ -50,7 +49,6 @@ public class BidService {
         Bid updatedBid = br.findById(bid.getBidId()).orElse(null);
         assert updatedBid != null;
         updatedBid.setStatus(bid.getBidStatus()); //this has to be marked as getBidStatus because the Status is an object
-
         if(bid.getBidStatus().equals(PENDING)) {
             updatedBid.setAmount(bid.getAmount());
         }
@@ -58,6 +56,7 @@ public class BidService {
         if(bid.getBidStatus().equals(ACCEPTED)){
             closeBid(bid);
         }
+        bid.setHelperId(updatedBid.getHelper().getId());
         bid.setBidStatus(updatedBid.getStatus());
         bid.setAmount(updatedBid.getAmount());
         return bid;
