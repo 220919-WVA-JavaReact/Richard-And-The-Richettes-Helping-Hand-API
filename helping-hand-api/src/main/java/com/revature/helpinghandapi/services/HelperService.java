@@ -3,6 +3,7 @@ import com.revature.helpinghandapi.dtos.Credentials;
 import com.revature.helpinghandapi.dtos.HelperDTO;
 import com.revature.helpinghandapi.entities.Helper;
 import com.revature.helpinghandapi.exceptions.LoginException;
+import com.revature.helpinghandapi.exceptions.RegisterException;
 import com.revature.helpinghandapi.repositories.HelperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class HelperService {
 
     public HelperDTO createHelper(Credentials cred){
         if(hr.getHelperByUsername(cred.getUsername()).isPresent()){
-            // adding validation later
+            throw new RegisterException();
         }
         Helper newHelper = new Helper();
         newHelper.setFirst(cred.getFirst());
@@ -31,7 +32,7 @@ public class HelperService {
     public HelperDTO authenticate(Credentials cred) {
         Helper helper = hr.getHelperByUsernameAndPassword(cred.getUsername(), cred.getPassword()).orElseThrow(LoginException::new);
         if(cred.getUsername() != helper.getUsername() || cred.getPassword() != helper.getPassword()){
-            // adding validation later
+            throw new LoginException();
         }
         return new HelperDTO(helper);
     }
