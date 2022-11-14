@@ -1,7 +1,5 @@
 package com.revature.helpinghandapi.services;
-
 import com.revature.helpinghandapi.dtos.BidDTO;
-import com.revature.helpinghandapi.dtos.HelperDTO;
 import com.revature.helpinghandapi.entities.Bid;
 import com.revature.helpinghandapi.entities.Helper;
 import com.revature.helpinghandapi.entities.Request;
@@ -31,39 +29,39 @@ public class BidService {
 
     public BidDTO createBid(BidDTO bid){
         Bid newBid = new Bid();
-        Request request = rr.findById(bid.getRequestId()).orElse(null);
+        Request request = rr.findById(bid.getRequest().getId()).orElse(null);
         Helper helper = hr.findById(bid.getHelperId()).orElse(null);
         newBid.setHelper(helper);
         newBid.setRequest(request);
         newBid.setAmount(bid.getAmount());
         newBid.setStatus(PENDING);
         br.save(newBid);
-        bid.setBidStatus(PENDING);
-        bid.setBidId(newBid.getId());
+        bid.setStatus(PENDING);
+        bid.setId(newBid.getId());
         bid.setHelperId(helper.getId());
         return bid;
     } //This takes in a JSON object that contains helperId of the helper making the bid,the requestId that they want to make a bid on and the amount they want to bid
 
 
     public BidDTO updateBid(BidDTO bid){
-        Bid updatedBid = br.findById(bid.getBidId()).orElse(null);
+        Bid updatedBid = br.findById(bid.getId()).orElse(null);
         assert updatedBid != null;
-        updatedBid.setStatus(bid.getBidStatus()); //this has to be marked as getBidStatus because the Status is an object
-        if(bid.getBidStatus().equals(PENDING)) {
+        updatedBid.setStatus(bid.getStatus()); //this has to be marked as getBidStatus because the Status is an object
+        if(bid.getStatus().equals(PENDING)) {
             updatedBid.setAmount(bid.getAmount());
         }
         br.save(updatedBid);
-        if(bid.getBidStatus().equals(ACCEPTED)){
+        if(bid.getStatus().equals(ACCEPTED)){
             closeBid(bid);
         }
         bid.setHelperId(updatedBid.getHelper().getId());
-        bid.setBidStatus(updatedBid.getStatus());
+        bid.setStatus(updatedBid.getStatus());
         bid.setAmount(updatedBid.getAmount());
         return bid;
     } //This takes in a JSON object that contains the requestId and allows the Status and amount to be changed
 
     public void closeBid(BidDTO bidDTO){
-        Request request = rr.findById(bidDTO.getRequestId()).orElse(null);
+        Request request = rr.findById(bidDTO.getRequest().getId()).orElse(null);
         List<Bid> bids = br.findAll();
         for(Bid bid : bids){
             if(bid.getStatus() == PENDING) {
@@ -81,10 +79,10 @@ public class BidService {
         List<BidDTO> bidDTOs = new ArrayList<>();
         for(Bid bid : bids){
             BidDTO bidDTO = new BidDTO();
-            bidDTO.setBidStatus(bid.getStatus());
-            bidDTO.setRequestId(bid.getRequest().getId());
+            bidDTO.setStatus(bid.getStatus());
+            bidDTO.setRequest(bid.getRequest());
             bidDTO.setHelperId(bid.getHelper().getId());
-            bidDTO.setBidId(bid.getId());
+            bidDTO.setId(bid.getId());
             bidDTO.setAmount(bid.getAmount());
             bidDTOs.add(bidDTO);
         }
