@@ -123,6 +123,73 @@ public class RequestServiceTests {
 
     @Test
     public void getAllRequests(){
+        Date now = new Date();
+        Client testClient = new Client();
+        testClient.setId("10");
+        Client testClient2 = new Client();
+        testClient2.setId("11");
+        Request newRequest = new Request();
+        newRequest.setAvailability(Availability.OPEN);
+        newRequest.setId("1");
+        newRequest.setTitle("test");
+        newRequest.setDescription("test description");
+        newRequest.setDeadline(now);
+        newRequest.setClient(testClient);
+        Request newRequest2 = new Request();
+        newRequest2.setAvailability(Availability.OPEN);
+        newRequest2.setId("2");
+        newRequest2.setTitle("test2");
+        newRequest2.setDescription("test description 2");
+        newRequest2.setDeadline(now);
+        newRequest2.setClient(testClient);
+        Request newRequest3 = new Request();
+        newRequest3.setAvailability(Availability.OPEN);
+        newRequest3.setId("3");
+        newRequest3.setTitle("test3");
+        newRequest3.setDescription("test description 3");
+        newRequest3.setDeadline(now);
+        newRequest3.setClient(testClient2);
+        RequestDTO newRequest4 = new RequestDTO();
+        newRequest4.setAvailability(Availability.OPEN);
+        newRequest4.setRequestId(newRequest.getId());
+        newRequest4.setTitle("test");
+        newRequest4.setDescription("test description");
+        newRequest4.setDeadline(now);
+        newRequest4.setClientId(testClient.getId());
+        RequestDTO newRequest5 = new RequestDTO();
+        newRequest5.setAvailability(Availability.OPEN);
+        newRequest5.setRequestId(newRequest2.getId());
+        newRequest5.setTitle("test2");
+        newRequest5.setDescription("test description 2");
+        newRequest5.setDeadline(now);
+        newRequest5.setClientId(testClient.getId());
+        RequestDTO newRequest6 = new RequestDTO();
+        newRequest6.setAvailability(Availability.OPEN);
+        newRequest6.setRequestId(newRequest3.getId());
+        newRequest6.setTitle("test3");
+        newRequest6.setDescription("test description 3");
+        newRequest6.setDeadline(now);
+        newRequest6.setClientId(testClient2.getId());
+
+        List<Request> requests = new ArrayList<>();
+        requests.add(newRequest);
+        requests.add(newRequest2);
+        requests.add(newRequest3);
+
+        List<RequestDTO> requestsDTO = new ArrayList<>();
+        requestsDTO.add(newRequest4);
+        requestsDTO.add(newRequest5);
+        requestsDTO.add(newRequest6);
+
+        Mockito.when(mockRepository.findAll()).thenReturn(requests);
+
+
+        List<RequestDTO> actual = rut.getAllRequests();
+
+        assertEquals(actual, requestsDTO);
+        System.out.println("EXPECTED: " + requestsDTO);
+        System.out.println("ACTUAL: " + actual);
+
 
     }
 
