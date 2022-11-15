@@ -9,6 +9,9 @@ public class ClientDTO {
     private String first;
     private String last;
 
+    public ClientDTO() {
+    }
+
     public ClientDTO(Client client) {
         this.id = client.getId();
         this.first = client.getFirst();

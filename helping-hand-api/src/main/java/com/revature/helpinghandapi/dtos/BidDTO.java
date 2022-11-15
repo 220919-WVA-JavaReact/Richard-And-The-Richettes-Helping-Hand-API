@@ -1,23 +1,24 @@
 package com.revature.helpinghandapi.dtos;
 import com.revature.helpinghandapi.entities.Bid;
+import com.revature.helpinghandapi.entities.Request;
 import com.revature.helpinghandapi.entities.Status;
 import lombok.Data;
 
 @Data
 public class BidDTO {
     private String helperId;
-    private String requestId;
+    private Request request;
     private float amount;
-    private String bidId;
-    private Status bidStatus;
+    private String id;
+    private Status status;
 
     public BidDTO(){}
     public BidDTO(Bid bid){
         this.helperId = bid.getHelper().getId();
-        this.requestId = bid.getRequest().getId();
+        this.request = bid.getRequest();
         this.amount = bid.getAmount();
-        this.bidId = bid.getId();
-        this.bidStatus = bid.getStatus();
+        this.id = bid.getId();
+        this.status = bid.getStatus();
     }
 
 
