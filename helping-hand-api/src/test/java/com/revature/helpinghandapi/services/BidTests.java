@@ -226,7 +226,6 @@ public class BidTests {
         bids.add(bidDTO2);
 
         Mockito.when(br.findByHelperId("exampleHelper")).thenReturn(bids);
-
         List<BidDTO> actual = bs.getBidsByHelperId("exampleHelper");
         assertEquals(actual, bids);
         System.out.println("Expected: " + bids);
@@ -245,7 +244,6 @@ public class BidTests {
         helper.setPassword("ExamplePass");
         helper.setFirst("HelperF");
         helper.setLast("HelperL");
-
 
         Request request = new Request();
         request.setClient(client);
