@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import static com.revature.helpinghandapi.entities.Status.PENDING;
+
+import static com.revature.helpinghandapi.entities.Status.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -132,14 +133,10 @@ public class BidTests {
         bids.add(bidDTO2);
 
         Mockito.when(br.findByRequestId("exampleRequest")).thenReturn(bids);
-
         List<BidDTO> actual = bs.getBidsByRequestId("exampleRequest");
         assertEquals(actual, bids);
         System.out.println("Expected: " + bids);
         System.out.println("Actual: " + actual);
-
-
-//        assertEquals(expected, actual);
     }
 
     @Test
@@ -275,12 +272,14 @@ public class BidTests {
         bid2.setStatus(PENDING);
 
         BidDTO bidDTO = new BidDTO();
+        bidDTO.setId(bid.getId());
         bidDTO.setRequest(request);
         bidDTO.setAmount(250);
         bidDTO.setHelperId(helper.getId());
         bidDTO.setStatus(PENDING);
 
         BidDTO bidDTO2 = new BidDTO();
+        bidDTO2.setId(bid2.getId());
         bidDTO2.setRequest(request2);
         bidDTO2.setAmount(200);
         bidDTO2.setHelperId(helper.getId());
@@ -295,10 +294,9 @@ public class BidTests {
         bidDTOS.add(bidDTO2);
 
         Mockito.when(br.findAll()).thenReturn(bids);
-
         List<BidDTO> actual = bs.getAllBids();
         assertEquals(actual, bidDTOS);
-        System.out.println("Expected: " + bids);
+        System.out.println("Expected: " + bidDTOS);
         System.out.println("Actual: " + actual);
     }
 }
