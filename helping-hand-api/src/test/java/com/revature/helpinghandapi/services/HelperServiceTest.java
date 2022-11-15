@@ -1,10 +1,12 @@
 package com.revature.helpinghandapi.services;
+
 import com.revature.helpinghandapi.HelpingHandApiApplication;
 import com.revature.helpinghandapi.dtos.ClientDTO;
 import com.revature.helpinghandapi.dtos.Credentials;
+import com.revature.helpinghandapi.dtos.HelperDTO;
 import com.revature.helpinghandapi.entities.Client;
-import com.revature.helpinghandapi.exceptions.RegisterException;
-import com.revature.helpinghandapi.repositories.ClientRepository;
+import com.revature.helpinghandapi.entities.Helper;
+import com.revature.helpinghandapi.repositories.HelperRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +15,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes= HelpingHandApiApplication.class)
-public class ClientServiceTest {
+public class HelperServiceTest {
     @MockBean
-    private ClientRepository cr;
+    private HelperRepository hr;
 
     @Autowired
-    private ClientService cs;
+    private HelperService cs;
 
     @Test
     public void successLogin(){
@@ -30,16 +32,16 @@ public class ClientServiceTest {
         credentials.setUsername("testbobbytables");
         credentials.setPassword("testpassword");
 
-        Client client = new Client();
+        Helper helper = new Helper();
 
-        client.setUsername(credentials.getUsername());
-        client.setPassword(credentials.getPassword());
+        helper.setUsername(credentials.getUsername());
+        helper.setPassword(credentials.getPassword());
 
-        Mockito.when(cr.getClientByUsernameAndPassword(credentials.getUsername(), credentials.getPassword())).thenReturn(Optional.of(client));
+        Mockito.when(hr.getHelperByUsernameAndPassword(credentials.getUsername(), credentials.getPassword())).thenReturn(Optional.of(helper));
 
-        ClientDTO expected = new ClientDTO(client);
+        HelperDTO expected = new HelperDTO(helper);
 
-        ClientDTO actual = cs.authenticate(credentials);
+        HelperDTO actual = cs.authenticate(credentials);
 
         assertEquals(expected, actual);
 
@@ -55,13 +57,13 @@ public class ClientServiceTest {
         creds.setUsername("theUserName");
         creds.setPassword("pass");
 
-        ClientDTO expected = new ClientDTO();
+        HelperDTO expected = new HelperDTO();
         expected.setId("ten");
         expected.setFirst("diffFirst");
         expected.setLast("diffLast");
         expected.setUsername("theUserName");
 
-        ClientDTO actual = cs.createClient(creds);
+        HelperDTO actual = cs.createHelper(creds);
 
         expected.setId(actual.getId());
 

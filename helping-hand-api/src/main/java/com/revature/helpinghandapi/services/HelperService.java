@@ -26,7 +26,8 @@ public class HelperService {
         newHelper.setLast(cred.getLast());
         newHelper.setUsername(cred.getUsername());
         newHelper.setPassword(cred.getPassword());
-        return new HelperDTO(hr.save(newHelper));
+        hr.save(newHelper);
+        return new HelperDTO(newHelper);
     }
 
     public HelperDTO authenticate(Credentials cred) {

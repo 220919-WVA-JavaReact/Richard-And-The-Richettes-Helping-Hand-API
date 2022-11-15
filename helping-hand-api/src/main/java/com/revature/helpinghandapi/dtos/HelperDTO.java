@@ -10,6 +10,9 @@ public class HelperDTO {
     private String first;
     private String last;
 
+    public HelperDTO() {
+    }
+
     public HelperDTO(Helper helper) {
         this.id = helper.getId();
         this.first = helper.getFirst();
