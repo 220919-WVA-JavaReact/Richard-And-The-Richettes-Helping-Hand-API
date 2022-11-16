@@ -34,6 +34,14 @@ public class RequestService {
         return requestDTO;
     }
 
+    public List<RequestDTO> getOpenRequests(){
+        List<Request> requests = rr.findByAvailability(OPEN);
+        List<RequestDTO> requestDTO = requests.stream()
+                .map(request -> new RequestDTO(request))
+                .collect(Collectors.toList());
+        return requestDTO;
+    }
+
     public Request updateRequest(RequestDTO request){
         Request updateRequest = rr.findById(request.getRequestId()).orElse(null);
         assert updateRequest != null;
