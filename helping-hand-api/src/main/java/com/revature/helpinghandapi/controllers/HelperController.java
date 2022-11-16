@@ -43,7 +43,7 @@ public class HelperController {
     
     @GetMapping("/requests")
     public ResponseEntity<List<RequestDTO>> getAllRequests() {
-        List<RequestDTO> requests = rs.getAllRequests();
+        List<RequestDTO> requests = rs.getOpenRequests();
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
     
