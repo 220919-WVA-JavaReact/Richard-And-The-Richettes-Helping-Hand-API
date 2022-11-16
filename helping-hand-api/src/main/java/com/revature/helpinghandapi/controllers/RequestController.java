@@ -25,4 +25,16 @@ public class RequestController {
         return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
     }
 
+//    @PutMapping
+//    public ResponseEntity<RequestDTO> updateRequest(@RequestBody RequestDTO request) {
+//        RequestDTO updatedRequest = rs.updateRequest(request);
+//        return new ResponseEntity<>(updatedRequest, HttpStatus.PROCESSING);
+//    }
+
+    @PutMapping("/update")
+    public ResponseEntity<RequestDTO> updateRequests(@RequestBody RequestDTO requestDTO) {
+        RequestDTO updateRequest = rs.updateRequests(requestDTO);
+        return new ResponseEntity<>(updateRequest, HttpStatus.PROCESSING);
+    }
+
 }
