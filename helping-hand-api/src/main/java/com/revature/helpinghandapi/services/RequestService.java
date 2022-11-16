@@ -40,20 +40,12 @@ public class RequestService {
     }
 
     public RequestDTO updateRequests(RequestDTO request){
-        Request updateRequest = new Request();
         Request newRequest = rr.findById(request.getRequestId()).orElse(null);
-//        assert updateRequest != null;
-        updateRequest.setClient(newRequest.getClient());
-        updateRequest.setId(newRequest.getId());
-//        updateRequest.setAvailability(request.getAvailability());
-        rr.save(updateRequest);
-//        if(request.getAvailability().equals(CLOSED)){
-//            closeRequest(request);
-//        }
-        request.setAvailability(updateRequest.getAvailability());
-//        request.setClientId(updateRequest.getClient().getId());
-        request.setDescription(updateRequest.getDescription());
-        request.setDeadline(updateRequest.getDeadline());
+        newRequest.setAvailability(request.getAvailability());
+        newRequest.setTitle(request.getTitle());
+        newRequest.setDeadline(request.getDeadline());
+        newRequest.setDescription(request.getDescription());
+        rr.save(newRequest);
         return request;
     }
 
