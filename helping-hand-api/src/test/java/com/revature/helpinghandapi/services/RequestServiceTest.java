@@ -20,7 +20,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes= HelpingHandApiApplication.class)
-public class RequestServiceTests {
+public class RequestServiceTest {
 
     @MockBean
     RequestRepository mockRepository;

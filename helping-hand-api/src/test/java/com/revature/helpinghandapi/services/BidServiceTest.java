@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest(classes= HelpingHandApiApplication.class)
-public class BidTests {
+public class BidServiceTest {
 
     @MockBean
     private BidRepository br;
