@@ -41,7 +41,7 @@ public class RequestService {
 
 
     public RequestDTO updateRequests(RequestDTO request){
-        Request newRequest = rr.findById(request.getRequestId()).orElse(null);
+        Request newRequest = rr.findById(request.getId()).orElse(null);
         newRequest.setAvailability(request.getAvailability());
         newRequest.setTitle(request.getTitle());
         newRequest.setDeadline(request.getDeadline());
