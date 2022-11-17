@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - echo "build phase started"
+      - mvn clean package -Pprod
+  post_build:
+    commands:
+      - mv target/*.jar ./helping-hand.jar
+
+artifacts:
+  files:
+    - helping-hand.jar
