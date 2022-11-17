@@ -11,14 +11,14 @@ public class RequestDTO {
     private String description;
     private Date deadline;
 
-    private String requestId;
+    private String id;
 
     private Availability availability;
 
     public RequestDTO(){}
 
     public RequestDTO(Request request){
-        this.requestId = request.getId();
+        this.id = request.getId();
         this.clientId = request.getClient().getId();
         this.title = request.getTitle();
         this.description = request.getDescription();
