@@ -1,6 +1,5 @@
 package com.revature.helpinghandapi.controllers;
 import com.revature.helpinghandapi.dtos.RequestDTO;
-import com.revature.helpinghandapi.entities.Request;
 import com.revature.helpinghandapi.services.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +22,12 @@ public class RequestController {
     public ResponseEntity<RequestDTO> createRequest(@RequestBody RequestDTO request){
         RequestDTO newRequest = rs.createRequest(request);
         return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}/update")
+    public ResponseEntity<RequestDTO> updateRequests(@RequestBody RequestDTO requestDTO) {
+        RequestDTO updateRequest = rs.updateRequests(requestDTO);
+        return new ResponseEntity<>(updateRequest, HttpStatus.CREATED);
     }
 
 }

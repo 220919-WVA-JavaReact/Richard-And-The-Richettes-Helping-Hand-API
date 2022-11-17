@@ -46,10 +46,5 @@ public class HelperController {
         List<RequestDTO> requests = rs.getOpenRequests();
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
-    
-    @PatchMapping("/requests/update/{availability}")
-    public ResponseEntity<Request> updateRequests(@RequestBody RequestDTO requestDTO) {
-        Request updateRequest = rs.updateRequest(requestDTO);
-        return new ResponseEntity<>(updateRequest, HttpStatus.ACCEPTED);
-    }
+
 }
