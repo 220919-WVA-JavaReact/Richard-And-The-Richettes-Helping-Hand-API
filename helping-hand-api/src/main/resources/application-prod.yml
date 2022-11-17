@@ -1,9 +1,11 @@
 spring:
-  datasource:
-    url: ${HH_DB_URL} # Environment variables to not hardcode values
-    username: ${HH_DB_USERNAME}
-    password: ${HH_DB_PASSWORD}
+#  datasource:
+#    url: ${HH_DB_URL} # Environment variables to not hardcode values
+#    username: ${HH_DB_USERNAME}
+#    password: ${HH_DB_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: validate # Specifies how Hibernate should interact with existing tables
+server:
+  port: 5000 # activate this when changing to Beanstalk so port is open to 5000 instead of 8080
