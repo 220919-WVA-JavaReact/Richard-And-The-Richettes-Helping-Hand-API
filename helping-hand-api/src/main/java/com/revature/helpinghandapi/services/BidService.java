@@ -27,6 +27,7 @@ public class BidService {
     }
 
     public BidDTO createBid(BidDTO bid){
+        System.out.println(bid.getRequest());
         Bid newBid = new Bid();
         Request request = rr.findById(bid.getRequest().getId()).orElse(null);
         Helper helper = hr.findById(bid.getHelperId()).orElse(null);
@@ -37,7 +38,7 @@ public class BidService {
         br.save(newBid);
         bid.setStatus(PENDING);
         bid.setId(newBid.getId());
-        bid.setHelperId(helper.getId());
+        //bid.setHelperId(helper.getId());
         return bid;
     } //This takes in a JSON object that contains helperId of the helper making the bid,the requestId that they want to make a bid on and the amount they want to bid
 

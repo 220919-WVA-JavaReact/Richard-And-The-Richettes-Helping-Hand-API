@@ -22,6 +22,7 @@ public class BidController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<BidDTO> createBid(@RequestBody BidDTO bid){
+        System.out.println(bid.getRequest() + " bid controller");
         BidDTO newBid = bs.createBid(bid);
         return new ResponseEntity<>(newBid, HttpStatus.CREATED);
     } //this communicates with the Service Layer in order to create a new bid

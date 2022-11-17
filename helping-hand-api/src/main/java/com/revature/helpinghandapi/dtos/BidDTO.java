@@ -12,7 +12,10 @@ public class BidDTO {
     private String id;
     private Status status;
 
-    public BidDTO(){}
+    public BidDTO(){
+        System.out.println("hello");
+        System.out.println(this.id);
+    }
     public BidDTO(Bid bid){
         this.helperId = bid.getHelper().getId();
         this.request = bid.getRequest();
