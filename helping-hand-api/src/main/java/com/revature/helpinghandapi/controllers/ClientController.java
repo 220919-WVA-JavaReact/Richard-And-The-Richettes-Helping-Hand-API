@@ -51,4 +51,5 @@ public class ClientController {
         List<RequestDTO> requests = rs.getRequestsByClientId(id);
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
+
 }

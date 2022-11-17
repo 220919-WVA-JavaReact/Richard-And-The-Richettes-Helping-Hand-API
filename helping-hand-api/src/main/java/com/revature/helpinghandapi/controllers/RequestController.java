@@ -24,8 +24,8 @@ public class RequestController {
         return new ResponseEntity<>(newRequest, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}/update")
-    public ResponseEntity<RequestDTO> updateRequests(@RequestBody RequestDTO requestDTO) {
+    @PutMapping("/{id}")
+    public ResponseEntity<RequestDTO> updateRequests(@PathVariable ("id") String id, @RequestBody RequestDTO requestDTO) {
         RequestDTO updateRequest = rs.updateRequests(requestDTO);
         return new ResponseEntity<>(updateRequest, HttpStatus.CREATED);
     }
