@@ -32,6 +32,15 @@ public class Request {
         this.id = UUID.randomUUID().toString();
     }
 
+    public Request(String id, Client client, String title, String description, Date deadline, Availability availability) {
+        this.id = id;
+        this.client = client;
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
+        this.availability = availability;
+    }
+
     public String getId() {
         return id;
     }

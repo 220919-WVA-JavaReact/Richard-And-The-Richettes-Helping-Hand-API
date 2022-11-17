@@ -33,7 +33,7 @@ public class HelperService {
     public HelperDTO authenticate(Credentials cred) {
         Helper helper = hr.getHelperByUsernameAndPassword(cred.getUsername(), cred.getPassword()).orElseThrow(LoginException::new);
         if(cred.getUsername() != helper.getUsername() || cred.getPassword() != helper.getPassword()){
-            throw new LoginException();
+
         }
         return new HelperDTO(helper);
     }

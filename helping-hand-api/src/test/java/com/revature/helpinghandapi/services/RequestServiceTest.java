@@ -62,14 +62,14 @@ public class RequestServiceTest {
         newRequest3.setClient(testClient2);
 
         RequestDTO expected = new RequestDTO();
-        expected.setRequestId("1");
+        expected.setId("1");
         expected.setClientId("10");
         expected.setTitle("test");
         expected.setDescription("test description");
         expected.setDeadline(now);
         expected.setAvailability(Availability.OPEN);
         RequestDTO expected2 = new RequestDTO();
-        expected2.setRequestId("2");
+        expected2.setId("2");
         expected2.setClientId("10");
         expected2.setTitle("test2");
         expected2.setDescription("test description 2");
@@ -105,7 +105,7 @@ public class RequestServiceTest {
         Mockito.when(cr.findById(testClient.getId())).thenReturn(Optional.of(testClient));
 
         RequestDTO expected = new RequestDTO();
-        expected.setRequestId("2");
+        expected.setId("2");
         expected.setClientId(testClient.getId());
         expected.setTitle("test");
         expected.setDescription("test description");
@@ -113,7 +113,7 @@ public class RequestServiceTest {
         expected.setAvailability(Availability.OPEN);
 
         RequestDTO actual = rut.createRequest(requestDTO);
-        actual.setRequestId("2");
+        actual.setId("2");
 
         assertEquals(expected, actual);
         System.out.println("EXPECTED: " + expected);
@@ -151,21 +151,21 @@ public class RequestServiceTest {
         newRequest3.setClient(testClient2);
         RequestDTO newRequest4 = new RequestDTO();
         newRequest4.setAvailability(Availability.OPEN);
-        newRequest4.setRequestId(newRequest.getId());
+        newRequest4.setId(newRequest.getId());
         newRequest4.setTitle("test");
         newRequest4.setDescription("test description");
         newRequest4.setDeadline(now);
         newRequest4.setClientId(testClient.getId());
         RequestDTO newRequest5 = new RequestDTO();
         newRequest5.setAvailability(Availability.OPEN);
-        newRequest5.setRequestId(newRequest2.getId());
+        newRequest5.setId(newRequest2.getId());
         newRequest5.setTitle("test2");
         newRequest5.setDescription("test description 2");
         newRequest5.setDeadline(now);
         newRequest5.setClientId(testClient.getId());
         RequestDTO newRequest6 = new RequestDTO();
         newRequest6.setAvailability(Availability.OPEN);
-        newRequest6.setRequestId(newRequest3.getId());
+        newRequest6.setId(newRequest3.getId());
         newRequest6.setTitle("test3");
         newRequest6.setDescription("test description 3");
         newRequest6.setDeadline(now);

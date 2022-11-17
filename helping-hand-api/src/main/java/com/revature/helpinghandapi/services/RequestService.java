@@ -39,6 +39,7 @@ public class RequestService {
         return requestDTO;
     }
 
+
     public RequestDTO updateRequests(RequestDTO request){
         Request newRequest = rr.findById(request.getRequestId()).orElse(null);
         newRequest.setAvailability(request.getAvailability());
@@ -47,10 +48,18 @@ public class RequestService {
         newRequest.setDescription(request.getDescription());
         rr.save(newRequest);
         return request;
+    }    
+
+    public List<RequestDTO> getOpenRequests(){
+        List<Request> requests = rr.findByAvailability(OPEN);
+        List<RequestDTO> requestDTO = requests.stream()
+                .map(request -> new RequestDTO(request))
+                .collect(Collectors.toList());
+        return requestDTO;
     }
 
     public void closeRequest(RequestDTO requestDTO){
-        Request request = rr.findById(requestDTO.getRequestId()).orElse(null);
+        Request request = rr.findById(requestDTO.getId()).orElse(null);
         List<Request> requests = rr.findAll();
         if(request.getAvailability().equals(CLOSED)){
             rr.save(request);
@@ -75,7 +84,7 @@ public class RequestService {
 
         request.setClientId(client.getId());
         request.setAvailability(OPEN);
-        request.setRequestId(newRequest.getId());
+        request.setId(newRequest.getId());
         return request;
     }
 }

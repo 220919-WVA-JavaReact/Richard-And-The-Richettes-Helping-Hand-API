@@ -33,7 +33,6 @@ public class ClientService {
     public ClientDTO authenticate(Credentials cred) {
         Client client = cr.getClientByUsernameAndPassword(cred.getUsername(), cred.getPassword()).orElseThrow(LoginException::new);
         if(cred.getUsername() != client.getUsername() || cred.getPassword() != client.getPassword()){
-            throw new LoginException();
         }
         return new ClientDTO(client);
     }
