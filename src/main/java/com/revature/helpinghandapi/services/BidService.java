@@ -4,6 +4,8 @@ import com.revature.helpinghandapi.entities.Bid;
 import com.revature.helpinghandapi.entities.Helper;
 import com.revature.helpinghandapi.entities.Request;
 import static com.revature.helpinghandapi.entities.Status.*;
+
+import com.revature.helpinghandapi.entities.Status;
 import com.revature.helpinghandapi.repositories.BidRepository;
 import com.revature.helpinghandapi.repositories.HelperRepository;
 import com.revature.helpinghandapi.repositories.RequestRepository;
@@ -96,7 +98,14 @@ public class BidService {
     }
 
     public List<BidDTO> getBidsByRequestId(String requestId) {
-        return br.findByRequestId(requestId);
+        List<BidDTO> allBids = br.findByRequestId(requestId);
+        List<BidDTO> notDeclined = new ArrayList<>();
+        for (BidDTO bid: allBids) {
+            if(!bid.getStatus().equals(Status.valueOf("DECLINED"))) {
+                notDeclined.add(bid);
+            }
+        }
+        return notDeclined;
     }
 
     public List<BidDTO> getBidsByHelperId(String helperId) {
