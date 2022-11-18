@@ -1,13 +1,11 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
+    url: ${HH_DB_URL} # Environment variables to not hardcode values
+    username: ${HH_DB_USERNAME}
+    password: ${HH_DB_PASSWORD}
+
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    defer-datasource-initialization: true # Tells spring to run import.sql after tables are created by Hibernate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create # Specifies how Hibernate should interact with existing tables
-    show-sql: true
-  h2:
-    console:
-      enabled: true
+      show-sql: true

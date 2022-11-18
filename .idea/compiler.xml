@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="helping-hand-api" />
+        <module name="Richard-And-The-Richettes-Helping-Hand-API" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="helping-hand-api" target="11" />
+      <module name="Richard-And-The-Richettes-Helping-Hand-API" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Richard-And-The-Richettes-Helping-Hand-API" options="-parameters" />
       <module name="helping-hand-api" options="-parameters" />
     </option>
   </component>

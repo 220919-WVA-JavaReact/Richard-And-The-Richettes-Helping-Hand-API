@@ -28,10 +28,10 @@ public class BidController {
     } //this communicates with the Service Layer in order to create a new bid
 
     //    @PostMapping(consumes = "application/json", produces = "application/json")
-    @PatchMapping
+    @PutMapping
     public ResponseEntity<BidDTO> updateBid(@RequestBody BidDTO bidDTO){
         BidDTO updatedBid = bs.updateBid(bidDTO);
-        return new ResponseEntity<>(updatedBid, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(updatedBid, HttpStatus.CREATED);
     } // this communicates with the Service Layer to change the Status of a bid
 
     @GetMapping
